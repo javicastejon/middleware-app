@@ -29,6 +29,7 @@ public class CountryController {
     }
 
     // Get all users
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_COUNTRY_ALL)
     public ResponseEntity<?> getAllCountries() {
         List<Country> countries = countryService.getAllCountries();

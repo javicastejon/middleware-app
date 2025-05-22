@@ -35,6 +35,7 @@ public class PackController {
     }
     
     // Add Pack to User
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_PACK_CREATE)
     public ResponseEntity<?> createPack(@Valid @RequestBody PackRequest packRequest) {
         packService.createPack(packRequest);       
@@ -42,6 +43,7 @@ public class PackController {
     }
 
     // Delete Pack to User
+    @CrossOrigin
     @Transactional
     @DeleteMapping(ApiConfig.ENDPOINT_PACK_DELETE)
     public ResponseEntity<?> deletePack(@PathVariable(ApiConfig.PATH_PACK_ID) Integer packId) {
@@ -50,6 +52,7 @@ public class PackController {
     }
 
     // Get all Pack by user
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_PACK_ALL_BY_USER)
     public ResponseEntity<List<Pack>> getUserPack(@PathVariable(ApiConfig.PATH_USER_ID) Integer user_id) {
         List<Pack> Pack = packService.getUserPack(user_id);

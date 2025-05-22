@@ -21,6 +21,7 @@ public class LoanStateController {
         this.loanStateService = loanStateService;
     }
 
+    @CrossOrigin
     @GetMapping
     @RequestMapping(ApiConfig.ENDPOINT_LOAN_STATE_ALL)
     public List<LoanState> getAllLoanStates() {

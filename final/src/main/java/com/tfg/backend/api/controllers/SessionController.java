@@ -37,7 +37,9 @@ public class SessionController {
         this.sessionPlayerService = sessionPlayerService;
     }
     
+    
     // Add Session by User
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_SESSION_CREATE)
     public ResponseEntity<?> createSession(@Valid @RequestBody SessionRequest sessionRequest) {   
         Session newSession = sessionService.createSession(sessionRequest);
@@ -46,6 +48,7 @@ public class SessionController {
     }
     
     // Update Session by User
+    @CrossOrigin
     @PutMapping(ApiConfig.ENDPOINT_SESSION_UPDATE)
     public ResponseEntity<?> updateSession(
             @PathVariable(ApiConfig.PATH_SESSION_ID) Integer id_session,
@@ -56,6 +59,7 @@ public class SessionController {
     }
 
     // Delete Session by User
+    @CrossOrigin
     @Transactional
     @DeleteMapping(ApiConfig.ENDPOINT_SESSION_DELETE)
     public ResponseEntity<?> deleteSession(@PathVariable(ApiConfig.PATH_SESSION_ID) Integer id_session) {
@@ -64,6 +68,7 @@ public class SessionController {
     }
 
     // Get all Session by user
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_SESSION_ALL_BY_USER)
     public ResponseEntity<List<Session>> getSessionsByHost(@PathVariable(ApiConfig.PATH_USER_ID) Integer id_user) {
         List<Session> sessions = sessionService.getSessionsByHost(id_user);

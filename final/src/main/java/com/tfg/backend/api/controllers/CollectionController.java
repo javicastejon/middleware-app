@@ -32,6 +32,7 @@ public class CollectionController {
     }
     
     // Add boardgame to user collection
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_BOARDGAME_ADD_TO_COLLECTION)
     public ResponseEntity<?> addBoardgameToCollection(
             @PathVariable(ApiConfig.PATH_USER_ID) Integer userId,
@@ -41,6 +42,7 @@ public class CollectionController {
     }
 
     // Delete boardgame to user collection
+    @CrossOrigin
     @Transactional
     @DeleteMapping(ApiConfig.ENDPOINT_BOARDGAME_DELETE_FROM_COLLECTION)
     public ResponseEntity<?> deleteBoardgameToCollection(
@@ -51,6 +53,7 @@ public class CollectionController {
     }
 
     // Get all collection by user
+    @CrossOrigin
     @Transactional
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAME_COLLECTION_BY_USER)
     public ResponseEntity<List<Boardgame>> getUserCollection(@PathVariable(ApiConfig.PATH_USER_ID) Integer user_id) {

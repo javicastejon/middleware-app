@@ -24,24 +24,28 @@ public class StockController {
         this.stockService = stockService;
     }
 
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_STOCK_ADD)
     public ResponseEntity<?> addStock(@Valid @RequestBody StockRequest stock) {
         stockService.addStock(stock);
         return new ResponseEntity<>(HttpStatus.CREATED); 
     }
 
+    @CrossOrigin
     @PutMapping(ApiConfig.ENDPOINT_STOCK_UPDATE)
     public ResponseEntity<?> updateStock(@PathVariable(ApiConfig.PATH_STOCK_ID) Integer stockId, @RequestBody StockRequest stock) {
         stockService.updateStock(stockId, stock);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(ApiConfig.ENDPOINT_STOCK_DELETE)
     public ResponseEntity<?> deleteStock(@PathVariable(ApiConfig.PATH_STOCK_ID) Integer stockId) {
         stockService.deleteStock(stockId);
         return new ResponseEntity<>(HttpStatus.OK); 
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_STOCK_ALL_BY_USER)
     public ResponseEntity<?> getAllStocksByUser(@PathVariable(ApiConfig.PATH_USER_ID) Integer userId) {
         List<Stock> stocks = stockService.getAllStocksByUser(userId);

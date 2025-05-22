@@ -11,6 +11,8 @@ import com.tfg.backend.exceptions.exceptions.ResourceNotFoundException;
 import com.tfg.backend.models.UserType;
 import com.tfg.backend.repository.UserTypeRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserTypeService {
 
@@ -18,12 +20,14 @@ public class UserTypeService {
     private UserTypeRepository userTypeRepository;
 
     // OPERATIONS \\
+    @Transactional
     public UserType getUserType(Integer id) {
         UserType userType = userTypeRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException(ErrorMessageRNF.TYPE_USER_RNF));
         return userType;
     }
 
+    @Transactional
     public UserType getUserType(String name){
         UserType userType = userTypeRepository.findByUserTypeName(name)
             .orElseThrow(() -> new ResourceNotFoundException(ErrorMessageRNF.TYPE_USER_RNF));

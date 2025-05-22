@@ -22,12 +22,14 @@ public class LoanController {
         this.loanService = loanService;
     }
 
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_LOAN_ADD)
     public ResponseEntity<?> addLoan(@Valid @RequestBody LoanRequest loanRequest) {
         loanService.addLoan(loanRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @PutMapping(ApiConfig.ENDPOINT_LOAN_UPDATE)
     public ResponseEntity<?> updateLoan(
             @PathVariable(ApiConfig.PATH_LOAN_ID) Integer loanId,
@@ -36,18 +38,21 @@ public class LoanController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(ApiConfig.ENDPOINT_LOAN_DELETE)
     public ResponseEntity<Void> deleteLoan(@PathVariable(ApiConfig.PATH_LOAN_ID) Integer loanId) {
         loanService.deleteLoan(loanId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_LOAN_ALL_BY_STOCK)
     public ResponseEntity<List<Loan>> getAllLoansByStockId(@PathVariable(ApiConfig.PATH_STOCK_ID) Integer stockId) {
         List<Loan> loans = loanService.getAllLoansByStockId(stockId);
         return new ResponseEntity<>(loans, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_LOAN_ALL_BY_USER)
     public ResponseEntity<List<Loan>> getAllLoansByUserId(@PathVariable(ApiConfig.PATH_USER_ID) Integer userId) {
         List<Loan> loans = loanService.getAllLoansByUserId(userId);

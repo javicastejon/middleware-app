@@ -34,6 +34,7 @@ public class MeetingController {
     }
 
     // Create Meeting
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_MEETING_CREATE)
     public ResponseEntity<?> createMeeting(@Valid @RequestBody MeetingRequest meetingRequest) {
         meetingService.createMeeting(meetingRequest);       
@@ -41,6 +42,7 @@ public class MeetingController {
     }
 
     // Delete Meeting
+    @CrossOrigin
     @DeleteMapping(ApiConfig.ENDPOINT_MEETING_DELETE)
     public ResponseEntity<?> deleteBoardgameToPack(@PathVariable(ApiConfig.PATH_MEETING_ID) Integer meetingId) {
         meetingService.deleteMeeting(meetingId);       
@@ -48,6 +50,7 @@ public class MeetingController {
     }
 
     // Get all Meetings to Session
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_MEETING_ALL_BY_SESSION)
     public ResponseEntity<List<Meeting>> getMeetingBySession(@PathVariable(ApiConfig.PATH_SESSION_ID) Integer sessionId) {
         List<Meeting> meetings = meetingService.getMeetingBySession(sessionId);

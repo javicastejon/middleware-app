@@ -18,7 +18,7 @@ public record UserRequest(
     @NotBlank(message = ErrorMessageRequests.USER_PASS_HASH_NULL)
     @Size(  max = DataBaseConfig.USER_PASS_HASH_MAX_CHARACTERS, 
             message = ErrorMessageRequests.USER_PASS_HASH_SIZE)
-    String passHassRq,
+    String passHashRq,
 
     @NotBlank(message = ErrorMessageRequests.USER_EMAIL_NULL)
     @Size(  min = DataBaseConfig.USER_EMAIL_MIN_CHARACTERS, 
@@ -40,6 +40,6 @@ public record UserRequest(
     @NotBlank(message = ErrorMessageRequests.USER_COUNTRY_NULL)
     String fkCountryNameRq,
 
-    @NotNull(message = ErrorMessageRequests.USER_TYPE_NULL)
-    Integer fkUserTypeRq
+    @NotBlank(message = ErrorMessageRequests.USER_TYPE_NULL)
+    String fkUserTypeNameRq
 ) {}

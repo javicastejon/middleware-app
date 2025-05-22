@@ -23,6 +23,7 @@ public class BoardGameGeekController {
         this.bggService = bggService;
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAMEGEEK_SEARCH_BOARDGAME)
     public List<Boardgame> searchBoardGames(@PathVariable("boardgame_name") String boardgameName) {
         return bggService.searchTopRelevantGames(boardgameName);

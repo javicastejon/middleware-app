@@ -32,18 +32,21 @@ public class BoardgameController {
         this.boardgameService = boardGameService;
     }
 
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_BOARDGAME_CREATE)
     public ResponseEntity<?> createBoardGame(@Valid @RequestBody BoardgameRequest boardGameRequest) {
         Boardgame newBoardGame = boardgameService.addBoardGame(boardGameRequest);
         return new ResponseEntity<>(newBoardGame, HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAME_BY_ID)
     public ResponseEntity<?> getBoardgameById(@PathVariable("id_boardgame") Integer boardgameId) {
         Boardgame boardgame = boardgameService.getBoardGameById(boardgameId);
         return new ResponseEntity<>(boardgame, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAME_ALL)
     public ResponseEntity<?> getAllBoardgames() {
         List<Boardgame> boardgames = boardgameService.getAllBoardgames();

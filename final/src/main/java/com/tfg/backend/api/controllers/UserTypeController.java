@@ -30,6 +30,7 @@ public class UserTypeController {
     }
 
     // Get all users
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_USER_TYPE_ALL)
     public ResponseEntity<?> getAllUserTypes() {
         List<UserType> userTypes = userTypeService.getAllUserTypes();

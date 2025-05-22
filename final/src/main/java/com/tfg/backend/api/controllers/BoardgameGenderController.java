@@ -31,6 +31,7 @@ public class BoardgameGenderController {
     }
 
     // Get all boardgame genders
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAME_GENDER_ALL)
     public ResponseEntity<?> getAllBoardgameGenders() {
         List<BoardgameGender> boardgameGenders = boardgameGenderService.getAllBoardgameGenders().stream()

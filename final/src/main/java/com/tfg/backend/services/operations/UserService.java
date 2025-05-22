@@ -40,7 +40,8 @@ public class UserService {
     // REGISTRY
     public User createUser(UserRequest userRequest) {
         validateUniqueValues(-1,userRequest);
-        return userRepository.save(mapToUser(userRequest));
+        User user = mapToUser(userRequest);
+        return userRepository.save(user);
     }
    
     // LOGIN
@@ -107,9 +108,9 @@ public class UserService {
     // Modifies and returns the user passed as parameter with the values ​​of the request passed as parameter
     private User mapToUser(User user, UserRequest userRequest){
         Country country = countryService.getCountry(userRequest.fkCountryNameRq());
-        UserType userType = userTypeService.getUserType(userRequest.fkUserTypeRq());
+        UserType userType = userTypeService.getUserType(userRequest.fkUserTypeNameRq());
         user.setUserName(userRequest.userNameRq());
-        user.setPassHash(userRequest.passHassRq());
+        user.setPassHash(userRequest.passHashRq());
         user.setEmail(userRequest.emailRq());
         user.setCreationDate(new Date(userRequest.creationDateRq()));
         user.setProfileImage(userRequest.profileImageRq());

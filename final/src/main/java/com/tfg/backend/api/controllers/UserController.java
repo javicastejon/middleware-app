@@ -38,6 +38,7 @@ public class UserController {
     }
 
     // Registry a new user
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_USER_REGISTRY)
     public ResponseEntity<Void> createUser(@Valid @RequestBody UserRequest userRequest) {
         userService.createUser(userRequest);
@@ -45,13 +46,15 @@ public class UserController {
     }
 
     // Login User to App
-    @GetMapping(ApiConfig.ENDPOINT_USER_LOGIN)
+    @CrossOrigin
+    @PostMapping(ApiConfig.ENDPOINT_USER_LOGIN)
     public ResponseEntity<?> userLogin(@Valid @RequestBody UserLoginRequest userLoginRequest) {
         User user = userService.checkLogin(userLoginRequest);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     // Modify an existing user
+    @CrossOrigin
     @PutMapping(ApiConfig.ENDPOINT_USER_EDIT)
     public ResponseEntity<Void> updateUser(@PathVariable(ApiConfig.PATH_USER_ID) Integer id_user, @RequestBody UserRequest userRequest) {
         userService.updateUser(id_user, userRequest);
@@ -59,6 +62,7 @@ public class UserController {
     }
 
     // Delete user by ID
+    @CrossOrigin
     @DeleteMapping(ApiConfig.ENDPOINT_USER_DELETE)
     public ResponseEntity<Void> deleteUser(@PathVariable(ApiConfig.PATH_USER_ID) Integer id_user) {
         userService.deleteUser(id_user);
@@ -66,12 +70,14 @@ public class UserController {
     }
 
     // Recovery a password mail
-    @PostMapping(ApiConfig.ENDPOINT_USER_PASSWORD_RECOVERY)
-    public ResponseEntity<Void> createUser(@Valid @RequestBody UserRecoveryRequest userRecoveryRequest) {
+    @CrossOrigin
+    @PutMapping(ApiConfig.ENDPOINT_USER_PASSWORD_RECOVERY)
+    public ResponseEntity<Void> passwordRecovery(@Valid @RequestBody UserRecoveryRequest userRecoveryRequest) {
         userService.recoveryCredentials(userRecoveryRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_USER_ALL_BY_TYPE)
     public ResponseEntity<List<User>> getUsersByUserType(
         @PathVariable(ApiConfig.PATH_USER_TYPE_ID) Integer userTypeId) {

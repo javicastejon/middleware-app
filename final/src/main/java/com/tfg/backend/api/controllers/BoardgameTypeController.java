@@ -31,6 +31,7 @@ public class BoardgameTypeController {
     }
 
     // Get all boardgame types
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_BOARDGAME_TYPE_ALL)
     public ResponseEntity<?> getAllBoardgameTypes() {
         List<BoardgameType> boardgameTypes = boardgameTypeService.getAllBoardgameTypes().stream()

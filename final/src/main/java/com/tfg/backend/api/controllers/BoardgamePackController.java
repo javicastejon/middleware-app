@@ -30,6 +30,7 @@ public class BoardgamePackController {
     }
 
     // Add Boardgame to Pack
+    @CrossOrigin
     @PostMapping(ApiConfig.ENDPOINT_PACK_ADD_BOARDGAME)
     public ResponseEntity<?> addBoardgameToPack(@PathVariable(ApiConfig.PATH_PACK_ID) Integer packId, 
         @PathVariable(ApiConfig.PATH_BOARDGAME_ID) Integer boardgameId) {
@@ -38,6 +39,7 @@ public class BoardgamePackController {
     }
 
     // Delete Boardgame to Pack
+    @CrossOrigin
     @DeleteMapping(ApiConfig.ENDPOINT_PACK_DELETE_BOARDGAME)
     public ResponseEntity<?> deleteBoardgameToPack(@PathVariable(ApiConfig.PATH_PACK_ID) Integer packId, 
         @PathVariable(ApiConfig.PATH_BOARDGAME_ID) Integer boardgameId) {
@@ -46,6 +48,7 @@ public class BoardgamePackController {
     }
 
     // Get all Boardgames by Pack
+    @CrossOrigin
     @GetMapping(ApiConfig.ENDPOINT_PACK_ALL_BOARDGAMES)
     public ResponseEntity<List<Boardgame>> getBoardgamesByPack(@PathVariable(ApiConfig.PATH_PACK_ID) Integer pack_id) {
         List<Boardgame> Pack = boardgamePackService.getBoardgamesByPack(pack_id);
