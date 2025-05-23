@@ -1,24 +1,4 @@
 package com.tfg.backend.services.external;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriComponentsBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import com.tfg.backend.models.Boardgame;
-import com.tfg.backend.models.BoardgameGender;
-import com.tfg.backend.models.BoardgameType;
-import com.tfg.backend.repository.BoardgameGenderRepository;
-import com.tfg.backend.repository.BoardgameRepository;
-import com.tfg.backend.repository.BoardgameTypeRepository;
-import com.tfg.backend.services.operations.BoardgameTypeService;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.ByteArrayInputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -26,6 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.tfg.backend.models.Boardgame;
+import com.tfg.backend.models.BoardgameGender;
+import com.tfg.backend.repository.BoardgameGenderRepository;
+import com.tfg.backend.repository.BoardgameRepository;
+import com.tfg.backend.repository.BoardgameTypeRepository;
 
 @Service
 public class BoardGameGeekService {
@@ -89,7 +86,7 @@ public class BoardGameGeekService {
     private List<String> parseTopNGameIdsFromSearch(String xmlResponse, int limit) throws Exception {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(new ByteArrayInputStream(xmlResponse.getBytes()));
+        Document doc = builder.parse(new ByteArrayInputStream(xmlResponse.getBytes("UTF-8")));
 
         NodeList items = doc.getElementsByTagName("item");
         List<String> ids = new ArrayList<>();
